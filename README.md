@@ -315,24 +315,24 @@ def gauss_newton(true_vp, true_vq, true_masses, vp_obs, vq_obs, masses_obs, max_
 #### Алгоритм Гаусса-Ньютона
 Алгоритм Гаусса-Ньютона является модификацией метода Ньютона, адаптированной для решения задач нелинейной регрессии и минимизации суммы квадратов остаточных ошибок. В данном случае он применяется для восстановления параметров системы трех тел (Солнце, Земля, Луна).
 Если задано m функций r = (r1, …, rm) (часто называемых невязками) от n переменных β = (β1, …, βn), при m ≥ n. Алгоритм Гаусса — Ньютона итеративно находит значения переменных, которые минимизируют сумму квадратов:
-![img.png](img.png)  
+![img.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img.png)  
 Начав с некоторого начального приближения β(0), метод осуществляет итерации
-![img_1.png](img_1.png)  
+![img_1.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_1.png)  
 Здесь, если рассматривать r и β как вектор-столбцы, элементы матрицы Якоби равны:
-![img_2.png](img_2.png)  
+![img_2.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_2.png)  
 Если m = n, итерации упрощаются до
-![img_3.png](img_3.png),
+![img_3.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_3.png),
 что является прямым обобщением одномерного метода Ньютона.
 При аппроксимации данных, где целью является поиск параметров β, таких, что заданная модель функций y = f(x, β) наилучшим образом приближает точки данных (xi, yi), функции ri являются остаточными ошибками:
-![img_4.png](img_4.png)
+![img_4.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_4.png)
 Тогда метод Гаусса — Ньютона можно выразить в терминах якобиана J_f функции f
-![img_5.png](img_5.png)
+![img_5.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_5.png)
 
-![img_6.png](img_6.png) является псевдообратной матрицей к J_f.
+![img_6.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_6.png) является псевдообратной матрицей к J_f.
 
 Также для повышения устойчивости вычислений (в случае плохо обусловленной матрицы JT) применяется регуляризация.
 Это модифицирует нормальные уравнения:
-![img_9.png](img_9.png),
+![img_9.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_9.png),
 где ϵ>0 — параметр регуляризации, а I — единичная матрица.
 
 #### LU-разложение
@@ -343,9 +343,9 @@ L и верхней треугольной матрицы U. Это важный
 
 Для матрицы A размерности n×n можно найти такие матрицы L и U, что A = LU, где
 - L — это нижняя треугольная матрица с единичными диагональными элементами 
-![img_10.png](img_10.png)  
+![img_10.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_10.png)  
 - U — это верхняя треугольная матрица  
-![img_11.png](img_11.png)  
+![img_11.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_11.png)  
 LU-разложение используется для упрощения решения системы линейных уравнений Ax=b, где 
 A — матрица коэффициентов, 
 x — вектор неизвестных, а 
@@ -358,16 +358,16 @@ Ax=b следующим образом:
 - Ux=y с помощью обратной подстановки.
 Чтобы найти L и U, применяют последовательность операций Гаусса (метод исключений), ориентируясь на «обнуление» элементов ниже главной диагонали:
 1. Начинаем с первого столбца матрицы A. Для этого:
-![img_12.png](img_12.png)  
+![img_12.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_12.png)  
 После этого вычитаем из оставшихся строк первые строки с учётом коэффициентов l_i1, чтобы получить верхнюю треугольную матрицу U.
 2. Переходим ко второму столбцу и повторяем аналогичные операции. При этом новые элементы матрицы L и U вычисляются с использованием уже найденных элементов:
-![img_13.png](img_13.png)  
+![img_13.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_13.png)  
 Этот процесс продолжается до тех пор, пока не будет завершено разложение на треугольные матрицы.
 
 ## 3. Результаты
-![img_14.png](img_14.png)График траекторий движения тел по восстановленным координатам.
+![img_14.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_14.png)График траекторий движения тел по восстановленным координатам.
 
-![img_15.png](img_15.png)
+![img_15.png](https://github.com/Natalya00/RestoringParameters/blob/main/graphics/img_15.png)
 Восстановленные параметры
 
 Алгоритм продемонстрировал быструю сходимость (всего за 2 итерации).
