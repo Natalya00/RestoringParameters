@@ -223,7 +223,7 @@ def gauss_newton(iterations, noisy_params, true_distances, h, t_span):
 
     return m0_n, m1_n, m2_n, q_n, v_n
 
-time_span = int(365)
+time_span = int(100)
 h = 1
 
 # Истинные значения
