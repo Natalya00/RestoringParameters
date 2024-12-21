@@ -105,7 +105,7 @@ def compute_jacobian(q_n, v_n, m0_n, m1_n, m2_n, true_distances, epsilon=1e-3):
     # Вычисление текущих импульсов на основе скоростей и масс
     p_n = np.array([v_n[0] * m0_n, v_n[1] * m1_n, v_n[2] * m2_n])
     jacobian = np.zeros((1, 3 + q_n.size + v_n.size))
-    t_span = 365
+    t_span = 100
 
     # Вычисляем частные производные по массам m0, m1, m2
     for j in range(3):
